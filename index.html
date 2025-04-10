@@ -61,11 +61,11 @@ function setup() {
 	mySlider = createSlider(0, 255, mySliderDefault, .1); 
 	mySlider.position(width/2, 128);
 	mySlider.input(()=>{
-		localStorage.setItem('mySlider', mySlider.value())
+		localStorage.setItem('mySlider', mySlider.value());
 	})
 
 	if(localStorage.hasOwnProperty('mySlider')){
-		mySliderDefault = localStorage.getItem('mySlider');
+		var storedValue = localStorage.getItem('mySlider');
 		mySlider.value(storedValue);
 
 	}
