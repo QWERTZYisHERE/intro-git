@@ -57,8 +57,18 @@ function setup() {
 	createCanvas(windowWidth, windowHeight)
 	background(0)
 	
-	mySlider = createSlider(0, 255, 128, .1); 
+
+	var mySliderDefault = 128; //default
+	if(localStorage.hasOwnProperty('mySlider')){
+		mySliderDefault = localStorage.getItem('mySlider');
+
+	}
+
+	mySlider = createSlider(0, 255, mySliderDefault, .1); 
 	mySlider.position(width/2, 128);
+	mySlider.input(()=>{
+		localStorage.setItem('mySlider', mySlider.value())
+	})
 }
 
 function draw() {
