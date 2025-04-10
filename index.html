@@ -51,24 +51,27 @@ function ease(iVal, oVal, eVal){
 function println(msg){
 	print(msg);
 }
-
+var mySliderDefault;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight)
 	background(0)
 	
 
-	var mySliderDefault = 128; //default
-	if(localStorage.hasOwnProperty('mySlider')){
-		mySliderDefault = localStorage.getItem('mySlider');
-
-	}
-
 	mySlider = createSlider(0, 255, mySliderDefault, .1); 
 	mySlider.position(width/2, 128);
 	mySlider.input(()=>{
 		localStorage.setItem('mySlider', mySlider.value())
 	})
+
+	if(localStorage.hasOwnProperty('mySlider')){
+		mySliderDefault = localStorage.getItem('mySlider');
+		mySlider.value(storedValue);
+
+	}
+
+
+
 }
 
 function draw() {
